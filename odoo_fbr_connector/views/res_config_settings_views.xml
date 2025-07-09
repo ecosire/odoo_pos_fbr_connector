@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_fbr_configuration" model="ir.ui.view">
+        <field name="name">account.fbr.configuration</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//app//block[@name='fiscal_localization_setting_container']" position="after">
+                <block title="FBR Configuration" name="fbr_config" id="fbr_config">
+                    <setting id="field_enable_fbr_config">
+                        <field name="enable_fbr_config"/>
+                    </setting>
+                    <setting id="field_include_service_fees" invisible="not enable_fbr_config">
+                        <field name="include_service_fees" />
+                    </setting>
+                    <setting id="field_account_fbr_authorization" invisible="not enable_fbr_config">
+                        <label for="account_fbr_authorization" invisible="not enable_fbr_config" />
+                        <div class="text-muted" invisible="not enable_fbr_config">
+                            Add header Authorization for FBR here
+                         </div>
+                        <field name="account_fbr_authorization" required="enable_fbr_config" />
+                    </setting>
+                    <setting id="field_service_fee" invisible="not include_service_fees or not enable_fbr_config">
+                        <field name="service_fee"/>
+                    </setting>
+                    <setting id="field_invoice_id" invisible="not enable_fbr_config">
+                        <field name="invoice_id" required="enable_fbr_config"/>
+                    </setting>
+                    <setting id="field_server_type" invisible="not enable_fbr_config">
+                        <field name="server_type" invisible="not enable_fbr_config" required="enable_fbr_config" widget="radio"/>
+                    </setting>
+                    <setting id="field_fbr_logo" invisible="not enable_fbr_config">
+                        <field name="fbr_logo" required="enable_fbr_config" widget="image"/>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+    <record id="res_company_inherit_view_form" model="ir.ui.view">
+        <field name="name">res.company.inherit.view.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <field name = "currency_id" position = "before">
+                <field name = "strn_or_ntn"/>
+            </field>
+        </field>
+    </record>
+</odoo> 

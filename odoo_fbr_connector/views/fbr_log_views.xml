@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="fbr_log_form_view" model="ir.ui.view">
+        <field name="name">fbr.log.form</field>
+        <field name="model">fbr.log</field>
+        <field name="arch" type="xml">
+            <form string="FBR Logs" create="0" edit="0">
+                <sheet>
+                    <group>
+                        <group>
+                           <field name="name" readonly="1"/>
+                           <field name="create_date" readonly="1"/>
+                           <field name="fbr_request" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="posted_succesfull" readonly="1"/>
+                            <field name="fbr_invoice_number" readonly="1"/>
+                            <field name="fbr_response" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="fbr_log_tree_view" model="ir.ui.view">
+        <field name="name">fbr.log.tree</field>
+        <field name="model">fbr.log</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0">
+                <field name="name" />
+                <field name="create_date" />
+                <field name="fbr_request" />
+                <field name="posted_succesfull" />
+                <field name="fbr_invoice_number" />
+            </tree>
+        </field>
+    </record>
+    <record id="fbr_log_views_action" model="ir.actions.act_window">
+        <field name="name">FBR Log</field>
+        <field name="res_model">fbr.log</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="fbr_log_views_menu" name="FBR Logs" parent="account.menu_finance_configuration"
+     sequence="100" action="fbr_log_views_action" groups="account.group_account_manager" />
+</odoo> 

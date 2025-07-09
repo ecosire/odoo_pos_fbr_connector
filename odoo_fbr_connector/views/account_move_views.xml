@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_move_inherit_view_form" model="ir.ui.view">
+        <field name="name">account.move.inherit.view.form</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr = "//button[@name = 'action_invoice_sent']" position = "before">
+                <button name = "post_data_to_fbr" string = "Post Data to FBR" type = "object" class = "oe_highlight" invisible="post_data_fbr or not enable_fbr_config" />
+                <button name = "print_receipt" string = "Print FBR Receipt" type = "object" class = "oe_highlight" invisible="not enable_fbr_config" />
+            </xpath>
+            <xpath expr = "//page[last()]" position = "after">
+                <page string = "FBR"  invisible="move_type not in ('out_invoice','out_refund') or not enable_fbr_config" >
+                    <group>
+                        <group>
+                            <field name = "enable_fbr_config" invisible = "1"/>
+                            <field name = "post_data_fbr"/>
+                            <field name = "invoice_number"/>
+                            <field name = "invoice_datetime"/>
+                            <field name = "invoice_qr_code" widget="image" />
+                            <field name = "fbr_request"/>
+                            <field name = "fbr_response"/>
+                            <field name="service_fee_move_id" readonly="1"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+            <field name = "payment_reference" position = "after">
+                <field name = "payment_mode" invisible="not enable_fbr_config" />
+            </field>
+            <field name = "amount_residual" position = "before">
+                <field name = "service_fees"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_account_move_filter_inherit" model="ir.ui.view">
+        <field name="name">account.move.filter.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after" >
+                <field name="post_data_fbr"/>
+                <field name = "move_type"/>
+            </field>
+            <xpath expr="//filter[@name='cancel']" position="after" >
+                <filter string="Failed FBR Request" name="fbr" domain="[('post_data_fbr','=',False)]" />
+            </xpath>
+        </field>
+    </record>
+    <record id="fbr_model_account_move_post_data_to_fbr_action" model="ir.actions.server">
+        <field name="name">Post Data to FBR</field>
+        <field name="type">ir.actions.server</field>
+        <field name="state">code</field>
+        <field name="model_id" ref="account.model_account_move"/>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="code">
+           records.post_data_to_fbr()
+        </field>
+    </record>
+</odoo> 
