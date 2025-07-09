@@ -1,0 +1,270 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>FBR Connector Backend for Odoo</title>
+    <style type="text/css">
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.4em;
+            color: #2980b9;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        p,
+        li {
+            font-size: 1em;
+            color: #34495e;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+        
+        .feature-list li {
+            padding-left: 10px;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .feature-list strong {
+            color: #3498db; /* Odoo's primary blue */
+        }
+
+        .screenshot-gallery {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Basic grid for standalone */
+            gap: 20px;
+        }
+
+        .screenshot-card {
+            background-color: #fdfdfd;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .screenshot-card:hover { /* May not work in app store */
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .screenshot-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .screenshot-card .caption {
+            font-size: 0.9em;
+            color: #555;
+            font-weight: bold;
+            min-height: 30px; /* Ensure consistent caption area height */
+        }
+
+        .code-snippet {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            color: #c7254e; /* Bootstrap's code color */
+        }
+
+        .pro-tip {
+            background-color: #e7f3fe;
+            border-left: 4px solid #2196F3; /* Blue accent */
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .pro-tip p {
+            margin-bottom: 5px;
+        }
+
+        .contact-section p, .developer-section p {
+            margin-bottom: 5px;
+        }
+        .whatsapp-button {
+            display: inline-block;
+            background-color: #25D366;
+            color: white !important; /* Important to override link styles */
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+        .whatsapp-button:hover { /* May not work in app store */
+            background-color: #1DA851;
+            color: white !important;
+        }
+        .whatsapp-button img { /* For SVG icon, if allowed. Otherwise, text only. */
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Odoo App Store specific consideration:
+           The store often uses <section class="oe_container">.
+           If you can wrap your content in that, it might inherit some base styling.
+           The HTML below is generic.
+        */
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>FBR Connector Backend</h1>
+        <p style="text-align: center; font-size: 1.2em; color: #555; margin-bottom: 30px;">
+            Sync Odoo Invoices with FBR (Pakistan) – Backend Only. Effortlessly post invoices, print FBR receipts, and ensure compliance with Pakistan's FBR e-invoicing requirements.
+        </p>
+
+        <h2>Overview</h2>
+        <p>
+            The <strong>FBR Connector Backend</strong> by Ecosire enables seamless integration between your Odoo system and Pakistan's Federal Board of Revenue (FBR) e-invoicing platform. Post invoice data directly to FBR, print official receipts, and manage compliance with ease—all from within Odoo.
+        </p>
+
+        <h2>Key Features</h2>
+        <ul class="feature-list">
+            <li><strong>Direct Invoice Posting:</strong> Post invoice data to FBR directly from the Odoo invoice form.</li>
+            <li><strong>FBR Receipt Printing:</strong> Print FBR receipts showing the assigned invoice number and QR code.</li>
+            <li><strong>Service Fees Support:</strong> Add and manage service fees in FBR receipts, with automatic journal entries.</li>
+            <li><strong>FBR Tab on Invoice:</strong> View FBR response and invoice number in a dedicated "FBR" tab on the invoice form.</li>
+            <li><strong>Configurable Connector:</strong> Enable or disable the FBR connector from Odoo configuration settings.</li>
+            <li><strong>Sandbox & Production Modes:</strong> Easily switch between Sandbox and Production environments for FBR authentication.</li>
+            <li><strong>Automatic & Manual Retry:</strong> Scheduled cron job and manual options to resend failed FBR submissions.</li>
+            <li><strong>Comprehensive Logging:</strong> Track successful and failed FBR submissions with a dedicated logging system.</li>
+            <li><strong>Mass Action:</strong> Post multiple invoices to FBR in one go from the invoice list view.</li>
+            <li><strong>Simple Installation:</strong> No extra dependencies required—just install and configure.</li>
+            <li><strong>PCT Code Support:</strong> Add Pakistan Customs Tariff (PCT) codes to invoice lines.</li>
+            <li><strong>Seamless Odoo Integration:</strong> Works natively with Odoo’s core invoicing system.</li>
+        </ul>
+
+        <h2>Screenshots</h2>
+        <div class="screenshot-gallery">
+            <div class="screenshot-card">
+                <img src="Screen 1.png" alt="Main Dashboard Screenshot" />
+                <p class="caption">Main Dashboard: FBR integration overview.</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="Screen 2.png" alt="Invoice Form Screenshot" />
+                <p class="caption">Invoice Form: Post to FBR and view FBR tab.</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="Screen 3.png" alt="FBR Receipt Screenshot" />
+                <p class="caption">FBR Receipt: Official printout with QR code.</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="Screen 4.png" alt="Service Fee Screenshot" />
+                <p class="caption">Service Fee: Add and track service fees.</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="Screen 5.png" alt="FBR Log Screenshot" />
+                <p class="caption">FBR Log: Track all FBR submissions.</p>
+            </div>
+            <div class="screenshot-card">
+                <img src="Screen 6.png" alt="Configuration Screenshot" />
+                <p class="caption">Configuration: Sandbox/Production and more.</p>
+            </div>
+        </div>
+        <p style="text-align:center; font-size:0.8em; color:#777;"><em>(Actual interface may vary slightly based on Odoo version and theme)</em></p>
+
+
+        <h2>Why Choose FBR Connector Backend?</h2>
+        <ul>
+            <li><strong>Stay Compliant:</strong> Meet FBR e-invoicing requirements with minimal effort.</li>
+            <li><strong>Save Time:</strong> Automate invoice posting and reduce manual work.</li>
+            <li><strong>Reliable Logging:</strong> Always know the status of your FBR submissions.</li>
+            <li><strong>Easy to Use:</strong> Intuitive interface for both technical and non-technical users.</li>
+            <li><strong>Developed by Experts:</strong> Built and supported by Ecosire (PRIVATE) LIMITED.</li>
+        </ul>
+
+        <h2>Installation & Configuration</h2>
+        <ol>
+            <li>Copy or download the <span class="code-snippet">odoo_fbr_connector</span> module to your Odoo <span class="code-snippet">addons</span> directory.</li>
+            <li>Restart your Odoo server.</li>
+            <li>Navigate to 'Apps' in Odoo, search for "FBR Connector Backend", and click 'Activate'.</li>
+            <li>Configure FBR settings in Odoo (API keys, environment, etc.).</li>
+        </ol>
+
+        <h2>Developed by Ecosire 🚀</h2>
+        <div class="developer-section" style="text-align: center; padding: 15px; background-color:#f8f9fa; border-radius: 6px;">
+            <p>The FBR Connector Backend is proudly developed by <strong>Ecosire (PRIVATE) LIMITED</strong>.</p>
+            <p>We specialize in:</p>
+            <p>AI Automation | Custom ERP Solutions (Odoo Experts!) | Growth Technologies</p>
+            <p>We are committed to providing high-quality tools that enhance your Odoo experience.</p>
+        </div>
+
+        <h2>Need Help or Have Questions?</h2>
+        <div class="contact-section" style="text-align: center; padding: 15px;">
+            <p><strong>Visit our Website:</strong> <a href="https://www.ecosire.com/" target="_blank">https://www.ecosire.com/</a></p>
+            <a href="https://wa.me/923130168262" target="_blank" class="whatsapp-button">
+                Contact us on WhatsApp
+            </a>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee;">
+            <p style="font-size: 0.9em; color: #777;">&copy; 2024-2025 Ecosire (PRIVATE) LIMITED. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+</html>

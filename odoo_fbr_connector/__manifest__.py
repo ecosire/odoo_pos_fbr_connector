@@ -18,7 +18,7 @@ Support for PCT (Pakistan Customs Tariff) code.
 Journal entries created/updated upon successful FBR submission.
 Seamless integration with Odoo’s core invoicing system.
 ''',
-    'author': 'ECOSIRE (PRIVATE) LIMITED',
+    'author': 'Ecosire (PRIVATE) LIMITED',
     'website': 'https://www.ecosire.com/',
     'category': 'Accounting',
     'depends': ['account'],
@@ -28,6 +28,16 @@ Seamless integration with Odoo’s core invoicing system.
         'views/res_config_settings_views.xml',
         'views/fbr_log_views.xml',
         'data/ir_cron_data.xml',
+    ],
+    'images': [
+        'static/description/cover.png',
+        'static/description/icon.png',
+        'static/description/Screen 1.png',
+        'static/description/Screen 2.png',
+        'static/description/Screen 3.png',
+        'static/description/Screen 4.png',
+        'static/description/Screen 5.png',
+        'static/description/Screen 6.png',
     ],
     'installable': True,
     'application': True,
